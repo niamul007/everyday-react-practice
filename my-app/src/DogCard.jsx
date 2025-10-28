@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 export function DogCard(props) {
     const [count, setCount] = useState(0);
-    function handleClick() {
-        setCount(count + 1);
-        return count;
+
+    function add() {
+        setCount(prevCount=> prevCount + 1)
     }
+
+    function minus(){
+        setCount(prevCount => prevCount - 1)
+    }
+
     return(
         <div className="container">
             <img src={props.img} alt={`dog's breed is ${props.breedName}`} className="dog-img" />
             <h2 className="dog-breed">{props.breedName}</h2>
             <p>count : {count}</p>
-            <button onClick = { handleClick}>Click here</button>
+            <button onClick = { add}>Add count</button>
+            <button onClick = {minus}>Delete Count</button>
         </div>
     )
 }
