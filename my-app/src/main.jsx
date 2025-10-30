@@ -4,11 +4,12 @@ import './index.css'
 import App from './App.jsx'
 import Hotel from './Hotel.jsx'
 import HotelHeader from './HotelHeader.jsx'
-
+import { Form } from './Form.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HotelHeader />
-    <Hotel />
+    {/* <HotelHeader />
+    <Hotel /> */}
+    <Form />
   </StrictMode>,
 )
