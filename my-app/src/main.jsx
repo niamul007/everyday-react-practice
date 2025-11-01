@@ -10,6 +10,8 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* <HotelHeader />
     <Hotel /> */}
-    <Form />
+    {/* <Form /> */}
+    <App />
+    
   </StrictMode>,
 )

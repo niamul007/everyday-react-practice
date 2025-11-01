@@ -1,20 +1,12 @@
-import React from 'react'
-import { dog } from './data'
-import  DogCard  from './DogCard'
-export function App(){
-  const newData = dog.map((item)=>{
-    return(
-      <DogCard
-      key = {item.id}
-      {...item}
-      />
-    )
-  })
-  return (
-    <>
-    {newData}
-    </>
-  )
+import React from "react";
+import { Jokes } from "./Jokes.jsx";
+import { data } from "./data.js";
+
+export function App() {
+  const jokesData = data.map((item) => {
+    return <Jokes key={item.id} {...item} />;
+  });
+  return <>{jokesData}</>;
 }
 
 export default App;
