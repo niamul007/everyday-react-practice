@@ -1,27 +1,9 @@
 import React from "react"
 
 export default function Test() {
-  const [myFavoriteThings, setMyFavoriteThings] = React.useState([])
-  
-  const allFavoriteThings = ["💦🌹", "😺", "💡🫖", "🔥🧤", "🟤🎁", 
-  "🐴", "🍎🥧", "🚪🔔", "🛷🔔", "🥩🍝"]
-  const thingsElements = myFavoriteThings.map(thing => <p key={thing}>{thing}</p>)
-
-  function addFavoriteThing() {
-    /**
-     * Challenge: you do it!
-     * Every time "Add item" is clicked, it should add another string
-     * "Test" to the list on the page
-     */
-    setMyFavoriteThings(prev => [...prev , `test ${prev.length + 1}`])
-  }
+  const [message,setmessage] = React.useState(["c"])
   
   return (
-    <main>
-      <button onClick={addFavoriteThing}>Add item</button>
-      <section aria-live="polite">
-        {thingsElements}
-      </section>
-    </main>
+    <h1>{message.length > 0 ? `You have ${message.length} unread ${message.length ===1 ?"meesage":"meesages"}` :"You're all caught up!"}</h1>
   )
 }
