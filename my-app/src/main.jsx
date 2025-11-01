@@ -8,10 +8,10 @@ import { Form } from './Form.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/* <HotelHeader />
-    <Hotel /> */}
+    <HotelHeader />
+    <Hotel />
     {/* <Form /> */}
-    <App />
+    {/* <App /> */}
     
   </StrictMode>,
 )
