@@ -3,6 +3,8 @@ import "./index.css";
 
 export default function Hotel() {
   const [ingredients, setIngredients] = React.useState([]);
+  const [recipe, setRecipe] = React.useState(false);
+  
   const ingredientsListItems = ingredients.map((ingredient) => (
     <li key={ingredient}>{ingredient}</li>
   ));
@@ -31,13 +33,15 @@ export default function Hotel() {
           <ul className="ingredients-list" aria-live="polite">
             {ingredientsListItems}
           </ul>
-          <div className="get-recipe-container">
-            <div>
-              <h3>Ready for a recipe?</h3>
-              <p>Generate a recipe from your list of ingredients.</p>
+          {ingredients.length > 3 && (
+            <div className="get-recipe-container">
+              <div>
+                <h3>Ready for a recipe?</h3>
+                <p>Generate a recipe from your list of ingredients.</p>
+              </div>
+              <button>Get a recipe</button>
             </div>
-            <button>Get a recipe</button>
-          </div>
+          )}
         </section>
       )}
     </main>
