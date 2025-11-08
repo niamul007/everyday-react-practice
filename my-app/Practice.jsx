@@ -13,8 +13,9 @@ export default function App() {
    */
   const [pads, setpads] = React.useState(padsData);
   const showPads = pads.map((pad) => {
+    let darkMode = false ;
     return (
-      <button key={pad.id} style={{ backgroundColor: pad.color }}>
+      <button key={pad.id} style={{ backgroundColor:`${darkMode?"#2222":"#cccc"} `}}>
         {pad.label}
       </button>
     );

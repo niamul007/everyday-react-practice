@@ -5,13 +5,14 @@ import App from './App.jsx'
 import Hotel from './Hotel.jsx'
 import HotelHeader from './HotelHeader.jsx'
 import { Form } from './Form.jsx'
-
+import Practice from '../Practice.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HotelHeader />
-    <Hotel />
+    {/* <HotelHeader />
+    <Hotel /> */}
     {/* <Form /> */}
     {/* <App /> */}
+    <Practice />
     
   </StrictMode>,
 )
