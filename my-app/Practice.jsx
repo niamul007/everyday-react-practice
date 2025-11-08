@@ -1,5 +1,6 @@
 import React from "react";
-import { pads } from "./pads.js";
+import "./pads.css";
+import { padsData } from "./pads.js";
 export default function App() {
   /**
    * Challenge part 1:
@@ -10,7 +11,7 @@ export default function App() {
    *    (Don't worry about using the "on" or "color"
    *    properties yet)
    */
-  const [pads, setpads] = React.useState(pads);
+  const [pads, setpads] = React.useState(padsData);
   const showPads = pads.map((pad) => {
     return (
       <button key={pad.id} style={{ backgroundColor: pad.color }}>
