@@ -1,4 +1,4 @@
-export const pads = [
+export const padsData = [
     {
         id: 1,
         color: "#F18D8B",
