@@ -17,6 +17,7 @@ export default function App() {
     return (
       <Pads key = {pad.id}
         color = {pad.color}
+        on = {pad.on}
       />
     );
   });
