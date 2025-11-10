@@ -8,11 +8,11 @@ import { Form } from './Form.jsx'
 import Practice from '../Practice.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/* <HotelHeader />
-    <Hotel /> */}
+    <HotelHeader />
+    <Hotel />
     {/* <Form /> */}
     {/* <App /> */}
-    <Practice />
+    {/* <Practice /> */}
     
   </StrictMode>,
 )
