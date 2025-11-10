@@ -13,11 +13,18 @@ export default function App() {
    *    properties yet)
    */
   const [pads, setpads] = React.useState(padsData);
+  const toggle = (id)=>{
+    setpads(prevPads => prevPads.map((item)=>{
+      return item.id === id ? {...item, on: !item.on} : item;
+    }))
+  }
   const showPads = pads.map((pad) => {
     return (
       <Pads key = {pad.id}
         color = {pad.color}
         on = {pad.on}
+        id = {pad.id}
+        toggle = {toggle}
       />
     );
   });
