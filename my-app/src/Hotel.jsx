@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
-import  CloudRecipe  from "./CloudRecipe.jsx";
-
+import { Ingredients } from "./Ingredients.jsx";
+import CloudRecipe from "./CloudRecipe.jsx";
 export default function Hotel() {
   const [ingredients, setIngredients] = React.useState([]);
   const [recipeShown, setRecipeShown] = React.useState(false);
@@ -32,24 +32,26 @@ export default function Hotel() {
         />
         <button>Add ingredient</button>
       </form>
-      {ingredients.length > 0 && (
-        <section>
-          <h2>Ingredients on hand:</h2>
-          <ul className="ingredients-list" aria-live="polite">
-            {ingredientsListItems}
-          </ul>
-          {ingredients.length > 3 && (
-            <div className="get-recipe-container">
-              <div>
-                <h3>Ready for a recipe?</h3>
-                <p>Generate a recipe from your list of ingredients.</p>
-              </div>
-              <button onClick={shownReciepe}>Get a recipe</button>
-            </div>
-          )}
-        </section>
-      )}
-      {recipeShown && <CloudRecipe />}
+      {ingredients.length > 0 && <Ingredients shownReciepe = {shownReciepe} ingredientsListItems ={ingredientsListItems} ingredients ={ingredients}/>
+      // (
+        // <section>
+        //   <h2>Ingredients on hand:</h2>
+        //   <ul className="ingredients-list" aria-live="polite">
+        //     {ingredientsListItems}
+        //   </ul>
+        //   {ingredients.length > 3 && (
+        //     <div className="get-recipe-container">
+        //       <div>
+        //         <h3>Ready for a recipe?</h3>
+        //         <p>Generate a recipe from your list of ingredients.</p>
+        //       </div>
+        //       <button onClick={shownReciepe}>Get a recipe</button>
+        //     </div>
+        //   )}
+        // </section>
+      // )
+      }
+      {recipeShown && (<CloudRecipe />)}
     </main>
   );
 }
