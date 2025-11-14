@@ -2,23 +2,27 @@ import React from "react";
 import "./index.css";
 import { Ingredients } from "./Ingredients.jsx";
 import CloudRecipe from "./CloudRecipe.jsx";
+import { runInference } from "./ai.js";
+
 export default function Hotel() {
   const [ingredients, setIngredients] = React.useState([]);
-  const [recipeShown, setRecipeShown] = React.useState(false);
+  const [recipe, setRecipe] = React.useState(false);
 
   const ingredientsListItems = ingredients.map((ingredient) => (
     <li key={ingredient}>{ingredient}</li>
   ));
 
-  function shownReciepe() {
-    setRecipeShown((prev) => !prev);
-  }
+    async function fetchRecipe() {
+      const aiRecipe = await runInference(ingredients.join(", "));
+      setRecipe(aiRecipe);
+    }
 
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const newIngredient = formData.get("ingredient");
     setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
+    event.currentTarget.reset();
   }
 
   return (
@@ -32,7 +36,7 @@ export default function Hotel() {
         />
         <button>Add ingredient</button>
       </form>
-      {ingredients.length > 0 && <Ingredients shownReciepe = {shownReciepe} ingredientsListItems ={ingredientsListItems} ingredients ={ingredients}/>
+      {ingredients.length > 0 && <Ingredients fetchRecipe = {fetchRecipe} ingredientsListItems ={ingredientsListItems} ingredients ={ingredients}/>
       // (
         // <section>
         //   <h2>Ingredients on hand:</h2>
@@ -51,7 +55,7 @@ export default function Hotel() {
         // </section>
       // )
       }
-      {recipeShown && (<CloudRecipe />)}
+      {recipe && (<CloudRecipe recipe ={recipe}/>)}
     </main>
   );
 }
