@@ -12,7 +12,7 @@ export function Ingredients(props) {
             <h3>Ready for a recipe?</h3>
             <p>Generate a recipe from your list of ingredients.</p>
           </div>
-          <button onClick={props.shownReciepe}>Get a recipe</button>
+          <button onClick={props.fetchRecipe}>Get a recipe</button>
         </div>
       )}
     </section>
