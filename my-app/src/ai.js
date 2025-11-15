@@ -41,7 +41,7 @@ const exponentialBackoffFetch = async (url, options, maxRetries = 5) => {
  */
 export async function runInference(userIngredients) {
     // CRITICAL: The API key is left as an empty string; the environment provides it at runtime securely.
-    const apiKey = "AIzaSyCIfr5FssNQMUDIdty0sYJzeznMmOusvMA"; 
+    const apiKey = ""; 
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`;
 
     const payload = {
