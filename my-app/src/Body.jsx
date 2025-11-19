@@ -1,46 +1,67 @@
-import { useState } from "react"
+import { use, useState } from "react";
+import { useEffect } from "react";
 
 export default function Body() {
-    const [meme, setMeme] = useState({
-        topText: "",
-        bottomText: "",
-        randomImage: "http://i.imgflip.com/1bij.jpg"
-    })
+  const [count, setCount] = useState(0);
+  const [data, setData] = useState([]);
+  const [meme, setMeme] = useState({
+    topText: "",
+    bottomText: "",
+    randomImage: "",
+  });
 
-    function handleChange(event) {
-        const {name, value} = event.target
-        setMeme(prevMeme => ({
-            ...prevMeme,
-            [name]: value
-        }))
-    }
-    return (
-        <main>
-            <div className="form">
-                <label>Top Text
-                    <input
-                        type="text"
-                        placeholder="One does not simply"
-                        name="topText"
-                        onChange={handleChange}
-                    />
-                </label>
+  useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((res) => res.json())
+      .then((data) => setData(data.data.memes));
+  }, []);
 
-                <label>Bottom Text
-                    <input
-                        type="text"
-                        placeholder="Walk into Mordor"
-                        name="bottomText"
-                        onChange={handleChange}
-                    />
-                </label>
-                <button>Get a new meme image 🖼</button>
-            </div>
-            <div className="meme">
-                <img src="http://i.imgflip.com/1bij.jpg" />
-                <span className="top">{meme.topText}</span>
-                <span className="bottom">{meme.bottomText}</span>
-            </div>
-        </main>
-    )
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      [name]: value,
+    }));
+  }
+
+  function handleClick() {
+    const randomNumber = Math.floor(Math.random() * data.length);
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      randomImage: data[randomNumber]?.url,
+    }));
+    setCount((prevCount) => prevCount + 1);
+  }
+
+  return (
+    <main>
+      <div className="form">
+        <label>
+          Top Text
+          <input
+            type="text"
+            placeholder="One does not simply"
+            name="topText"
+            onChange={handleChange}
+          />
+        </label>
+
+        <label>
+          Bottom Text
+          <input
+            type="text"
+            placeholder="Walk into Mordor"
+            name="bottomText"
+            onChange={handleChange}
+          />
+        </label>
+        <button onClick={handleClick}>Get a new meme image 🖼</button>
+      </div>
+      <div className="meme">
+        {meme.randomImage && <img src={meme.randomImage} alt="meme" />}
+        <span className="top">{meme.topText}</span>
+        <span className="bottom">{meme.bottomText}</span>
+      </div>
+    </main>
+  );
 }
