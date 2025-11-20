@@ -6,6 +6,8 @@ import Hotel from './Hotel.jsx'
 import HotelHeader from './HotelHeader.jsx'
 import { Form } from './Form.jsx'
 import Practice from '../Practice.jsx'
+import Effect from './Effect.jsx'
+import Resize from './Resize.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* <HotelHeader />
@@ -13,7 +15,7 @@ createRoot(document.getElementById('root')).render(
     {/* <Form /> */}
     {/* <App /> */}
     {/* <Practice /> */}
-    <App />
-    
+    {/* <App /> */}
+    <Resize/>
   </StrictMode>,
 )
