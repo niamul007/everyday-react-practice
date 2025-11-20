@@ -10,12 +10,8 @@ import Effect from './Effect.jsx'
 import Resize from './Resize.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/* <HotelHeader />
-    <Hotel /> */}
-    {/* <Form /> */}
-    {/* <App /> */}
-    {/* <Practice /> */}
-    {/* <App /> */}
-    <Resize/>
+    <HotelHeader />
+    <Hotel />
+
   </StrictMode>,
 )
