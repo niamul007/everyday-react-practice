@@ -13,9 +13,9 @@ export function App() {
   return (
     <>
       {/* <Test /> */}
-      {/* <Hotel /> */}
-      <Header />
-      <Body />
+      <Hotel />
+      {/* <Header />
+      <Body /> */}
       {/* {jokesData} */}
       {/* <Effect /> */}
     </>
