@@ -5,17 +5,26 @@ import CloudRecipe from "./CloudRecipe.jsx";
 import { runInference } from "./ai.js";
 
 export default function Hotel() {
-  const [ingredients, setIngredients] = React.useState([]);
-  const [recipe, setRecipe] = React.useState(false);
 
+  const [ingredients, setIngredients] = React.useState([]);
+  const [recipe, setRecipe] = React.useState("");
+  const recipeRef = React.useRef(null);
+
+
+  React.useEffect(() => {
+    if (recipe && recipeRef.current) {
+      recipeRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [recipe]);
+  
   const ingredientsListItems = ingredients.map((ingredient) => (
     <li key={ingredient}>{ingredient}</li>
   ));
 
-    async function fetchRecipe() {
-      const aiRecipe = await runInference(ingredients.join(", "));
-      setRecipe(aiRecipe);
-    }
+  async function fetchRecipe() {
+    const aiRecipe = await runInference(ingredients.join(", "));
+    setRecipe(aiRecipe);
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -36,26 +45,17 @@ export default function Hotel() {
         />
         <button>Add ingredient</button>
       </form>
-      {ingredients.length > 0 && <Ingredients fetchRecipe = {fetchRecipe} ingredientsListItems ={ingredientsListItems} ingredients ={ingredients}/>
-      // (
-        // <section>
-        //   <h2>Ingredients on hand:</h2>
-        //   <ul className="ingredients-list" aria-live="polite">
-        //     {ingredientsListItems}
-        //   </ul>
-        //   {ingredients.length > 3 && (
-        //     <div className="get-recipe-container">
-        //       <div>
-        //         <h3>Ready for a recipe?</h3>
-        //         <p>Generate a recipe from your list of ingredients.</p>
-        //       </div>
-        //       <button onClick={shownReciepe}>Get a recipe</button>
-        //     </div>
-        //   )}
-        // </section>
-      // )
+      {
+        ingredients.length > 0 && (
+          <Ingredients
+            fetchRecipe={fetchRecipe}
+            ingredientsListItems={ingredientsListItems}
+            ingredients={ingredients}
+            ref={recipeRef}
+          />
+        )
       }
-      {recipe && (<CloudRecipe recipe ={recipe}/>)}
+      {recipe && <CloudRecipe recipe={recipe} />}
     </main>
   );
 }
